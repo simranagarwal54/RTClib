@@ -15,7 +15,8 @@ void setup () {
   Serial.begin(9600);
 
   delay(3000); // wait for console opening
-
+  rtc.adjust(DateTime(2017, 7, 11, 12,34, 0));
+  
   if (! rtc.begin()) {
     Serial.println("Couldn't find RTC");
     while (1);
@@ -32,6 +33,7 @@ void setup () {
 }
 
 void loop () {
+    
     DateTime now = rtc.now();
     
     Serial.print(now.year(), DEC);
